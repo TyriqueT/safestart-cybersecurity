@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SafeStart helps you build safer digital habits and learn to recognize phishing attempts.">
+  <meta name="theme-color" content="#07111f">
+  <title>SafeStart | Personal Security Center</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="#home">SafeStart</a>
+      <span class="header-title">YOUR PERSONAL SECURITY CENTER</span>
+      <span class="learning-mode">Learning mode</span>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+
+    <section class="hero">
+      <p class="eyebrow">CYBERSECURITY STARTS HERE</p>
+      <h1>Build safer digital habits.</h1>
+      <p>
+        Your personal space to learn cybersecurity, check your security
+        habits, and practice identifying suspicious messages.
+      </p>
+    </section>
+
+    <section class="dashboard-overview" aria-label="Your dashboard progress">
+      <div class="stats-grid">
+
+        <article class="stat-card">
+          <h3>SECURITY CHECKLIST</h3>
+          <p id="checklist-count">0 / 5</p>
+          <p class="stat-description">Habits completed</p>
+        </article>
+
+        <article class="stat-card">
+          <h3>CHECKLIST PROGRESS</h3>
+          <p id="checklist-percentage">0%</p>
+          <progress id="checklist-progress" value="0" max="100">0%</progress>
+        </article>
+
+        <article class="stat-card">
+          <h3>QUIZ BEST SCORE</h3>
+          <p id="best-score">0%</p>
+          <p class="stat-description">Phishing awareness</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="security-checklist-section">
+      <h2>Your security checklist</h2>
+      <p>Check the habits you already practice. You can return to this list anytime.</p>
+
+      <div id="security-checklist" class="checklist">
+
+        <label>
+          <input type="checkbox" class="security-check" value="passwords">
+          <span>
+            <strong>Use strong, unique passwords</strong>
+            <span class="check-description">Avoid reusing passwords across accounts.</span>
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" class="security-check" value="mfa">
+          <span>
+            <strong>Enable multifactor authentication</strong>
+            <span class="check-description">Add another verification step to important accounts.</span>
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" class="security-check" value="updates">
+          <span>
+            <strong>Keep your devices updated</strong>
+            <span class="check-description">Install legitimate software and security updates.</span>
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" class="security-check" value="phishing">
+          <span>
+            <strong>Recognize phishing attempts</strong>
+            <span class="check-description">Be careful with unexpected links and attachments.</span>
+          </span>
+        </label>
+
+        <label>
+          <input type="checkbox" class="security-check" value="recovery">
+          <span>
+            <strong>Secure your recovery options</strong>
+            <span class="check-description">Keep recovery information current and protected.</span>
+          </span>
+        </label>
+
+      </div>
+
+      <p class="tip">
+        Security tip: If a message creates urgency or asks for sensitive
+        information, pause and verify it through an official channel.
+      </p>
+    </section>
+
+    <section id="quiz-section">
+      <h2>Phishing awareness quiz</h2>
+      <p>Test your knowledge with this quick security question.</p>
+
+      <form id="quiz-form">
+        <fieldset>
+          <legend>
+            You receive an unexpected email warning that your account will
+            be suspended unless you immediately click a link. What should
+            you do?
+          </legend>
+
+          <label>
+            <input type="radio" name="answer" value="a" required>
+            <span>Click the link before the account gets suspended.</span>
+          </label>
+
+          <label>
+            <input type="radio" name="answer" value="b">
+            <span>
+              Avoid the link and verify the alert through the official
+              website or app.
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="answer" value="c">
+            <span>Reply to the email with your account details.</span>
+          </label>
+        </fieldset>
+
+        <button type="submit">Submit answer</button>
+      </form>
+
+      <div id="quiz-feedback" role="status" aria-live="polite" hidden></div>
+
+      <button id="retry-quiz" type="button" hidden>Try again</button>
+    </section>
+
+    <section id="phishing-lab">
+      <h2>Phishing Lab</h2>
+      <p>
+        Practice identifying suspicious messages. Review the sender,
+        subject, and message before choosing your answer.
+      </p>
+
+      <p class="lab-progress-line">
+        <strong>Scenario progress:</strong>
+        <span id="lab-progress">1 of 3</span>
+      </p>
+
+      <article class="scenario-card">
+        <h3 id="scenario-sender">Sender details appear here</h3>
+
+        <p>
+          <strong>Subject:</strong>
+          <span id="scenario-subject">Message subject appears here</span>
+        </p>
+
+        <div id="scenario-message">
+          The example message will appear here.
+        </div>
+
+        <p id="scenario-clue">
+          Examine the message carefully before answering.
+        </p>
+      </article>
+
+      <fieldset id="lab-options">
+        <legend>Classify this message</legend>
+
+        <label>
+          <input type="radio" name="lab-answer" value="suspicious">
+          <span>Suspicious — possible phishing attempt</span>
+        </label>
+
+        <label>
+          <input type="radio" name="lab-answer" value="legitimate">
+          <span>Legitimate — appears to be a normal message</span>
+        </label>
+      </fieldset>
+
+      <button id="submit-lab-answer" type="button">Check answer</button>
+
+      <div id="lab-feedback" role="status" aria-live="polite" hidden></div>
+
+      <button id="next-scenario" type="button" hidden>
+        Next scenario
+      </button>
+
+      <div id="lab-results" hidden>
+        <h3>Lab complete!</h3>
+        <p>Your score: <strong id="lab-final-score">0%</strong></p>
+        <p>Keep practicing to improve your ability to spot phishing attempts.</p>
+        <button id="restart-lab" type="button">Restart lab</button>
+      </div>
+    </section>
+
+    <section class="achievements-panel">
+      <h2>Your achievements</h2>
+      <p>Build your skills and unlock achievements as you complete activities.</p>
+
+      <p>
+        <strong>Unlocked:</strong>
+        <span id="badge-count">0 / 3</span>
+      </p>
+
+      <div class="achievements-grid">
+
+        <article class="achievement-card" id="badge-security">
+          <span class="achievement-icon" aria-hidden="true">🛡️</span>
+          <h3>Security Starter</h3>
+          <p>Complete all five security checklist items.</p>
+          <span class="achievement-status" id="badge-security-status">Locked</span>
+        </article>
+
+        <article class="achievement-card" id="badge-phishing">
+          <span class="achievement-icon" aria-hidden="true">🔎</span>
+          <h3>Phishing Detective</h3>
+          <p>Correctly classify all three lab scenarios.</p>
+          <span class="achievement-status" id="badge-phishing-status">Locked</span>
+        </article>
+
+        <article class="achievement-card" id="badge-learner">
+          <span class="achievement-icon" aria-hidden="true">🎓</span>
+          <h3>Cyber Learner</h3>
+          <p>Earn a perfect score on the awareness quiz.</p>
+          <span class="achievement-status" id="badge-learner-status">Locked</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="security-tip">
+      <h2>Pause. Check. Protect.</h2>
+      <p>
+        You do not need to be a cybersecurity expert to start protecting
+        yourself. Take your time, question unusual requests, and verify
+        important messages before acting.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>SafeStart — Learn today. Stay safer tomorrow.</p>
+    <p>An educational cybersecurity awareness project.</p>
+  </footer>
+
+</body>
+</html>
